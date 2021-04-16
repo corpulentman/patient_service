@@ -13,6 +13,9 @@ class Patient:
 
     def get_summary(self, today: str) -> str:
         start_date = get_one_year_ago(today)
+        if not start_date:
+            return {}
+
         numerical_diagnostic_data = self.get_numerical_diagnostics(start_date, today)
         visits = self.get_visits(start_date, today)
         bmi = calc_bmi(numerical_diagnostic_data)

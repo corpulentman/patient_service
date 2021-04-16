@@ -19,6 +19,12 @@ def test_bad_patient_id():
     pass
 
 
+def test_bad_date():
+    p = Patient(123)
+    r = p.get_summary('2128')
+    assert r == {}
+
+
 def test_patient_with_missing_weights():
     diagnostics = [
         {'date': '20200301',
@@ -92,3 +98,4 @@ if __name__ == '__main__':
     test_patient_with_missing_height()
     test_patient_with_missing_weights()
     test_patient_with_zero_height()
+    test_bad_date()

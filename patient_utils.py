@@ -2,9 +2,12 @@ from datetime import datetime, timedelta
 
 
 def get_one_year_ago(today: str):
-    end_date_obj = datetime.strptime(today, '%Y%m%d')
-    start_date_obj = end_date_obj + timedelta(days=-365)
-    return start_date_obj.strftime('%Y%m%d')
+    try:
+        end_date_obj = datetime.strptime(today, '%Y%m%d')
+        start_date_obj = end_date_obj + timedelta(days=-365)
+        return start_date_obj.strftime('%Y%m%d')
+    except ValueError:
+        return None
 
 
 def calc_bmi(diagnostics):
